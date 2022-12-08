@@ -1,0 +1,190 @@
+/*==================== Grid Styles ====================
+  Adjust our box size to use the border-box model
+  Use the universal selector, *, along with universal pseudo-elements, *:before and *:after, to select every imaginable element and change the box-sizing to border-box. Remember, we’re going to want to include the necessary broweserTvendor prefixes for the box-sizing property, as it is a relatively new property.
+*/
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Create a class to serve as a container for our elements */
+.container,
+.grid {
+  margin: 0 auto;
+  width: 960px;
+}
+.container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/*==================== Clearfix ====================
+Recall that floats enable content to wrap around other content.
+While sometimes good, we need a way to turn it off in the CSS cascade and layout
+The "group" class below clears floats
+*/
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}
+
+.myjumbotron {
+  margin: 20px 100px;
+  padding: 40px;
+  background-color: #68adf3;
+  border: round;
+  text-align: center;
+  background-image: url("AlphaBlog_HomeImage.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+}
+
+.btn-signup {
+  border-radius: 10px;
+  border: 2px;
+  color: blue;
+  background-color: wheat;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin: 0;
+  position: relative;
+  top: 200px;
+  left: -10px
+}
+
+.btn-signup:hover {
+  color:  wheat;
+  background-color: blue;
+}
+
+.motto {
+  position: relative;
+  top: 90px;
+  left: -10px
+}
+
+.myhero {
+  color:blue;
+  font-size: 24px;
+  font-weight: 400;
+  font-style: italic;
+}
+.myhero-sm {
+  color:blue;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.nav-link {
+  color:white !important;
+}
+
+.mytitle {
+  color:antiquewhite
+}
+
+#logo {
+  color:antiquewhite
+}
+
+#page-backer {
+  background: -webkit-linear-gradient(to right,#bdbec4, #acaee0);
+  background: -moz-linear-gradient(to right,#bdbec4, #acaee0);
+  background: linear-gradient(to right,#bdbec4, #acaee0);
+}
+
+/* For gem will_paginate.  Taken from https://mislav.github.io/will_paginate/pagination.css */
+.digg_pagination {
+  background: white;
+  cursor: default;
+  /* self-clearing method: */ }
+  .digg_pagination a, .digg_pagination span, .digg_pagination em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px; }
+  .digg_pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd; }
+  .digg_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #2e6ab1;
+    color: white;
+    border: 1px solid #2e6ab1; }
+  .digg_pagination a {
+    text-decoration: none;
+    color: #105cb6;
+    border: 1px solid #9aafe5; }
+    .digg_pagination a:hover, .digg_pagination a:focus {
+      color: #000033;
+      border-color: #000033; }
+  .digg_pagination .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+    .digg_pagination .page_info b {
+      color: #000033;
+      background: #6aa6ed;
+      padding: 0.1em 0.25em; }
+  .digg_pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  * html .digg_pagination {
+    height: 1%; }
+  *:first-child + html .digg_pagination {
+    overflow: hidden; }
+
+.apple_pagination {
+  background: -webkit-linear-gradient(to right,#bdbec4, #acaee0);
+  background: -moz-linear-gradient(to right,#bdbec4, #acaee0);
+  background: linear-gradient(to right,#bdbec4, #acaee0);
+  border: 0px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  font-size: smaller;
+  cursor: default; }
+  .apple_pagination a, .apple_pagination span {
+    padding: 0.2em 0.3em; }
+  .apple_pagination .disabled {
+    color: #5b5a5a; }
+  .apple_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #bebebe;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.25;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; }

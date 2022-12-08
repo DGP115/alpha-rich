@@ -1,0 +1,11 @@
+<div class="container">
+  <h6 class="text-center mt-2">Rename this Category</h6>
+</div>
+
+<%= render 'shared/error_msgs', obj: @category %>
+<%= render 'categories/form' %>
+
+<div class="text-center mt-2 mb-3">
+  <%= link_to '[ Cancel and return to Category]', category_path(@category),
+              class: "text-decoration-none" %>
+</div>

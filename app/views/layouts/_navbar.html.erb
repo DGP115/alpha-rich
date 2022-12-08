@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to "AlphaBlog", root_path, class: "navbar-brand", id: "logo" %>
+      <button class="navbar-toggler" type="button"                                          data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Articles
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Articles Listing", articles_path, class:"dropdown-item" %></li>
+            <% if logged_in? %>
+              <li><%= link_to 'New_Article', new_article_path, class:"dropdown-item" %></li>
+            <% end %>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "Categories Listing", categories_path, class:"dropdown-item" %></li>
+            <% if logged_in? %>
+              <li><%= link_to 'New_Category', new_category_path, class:"dropdown-item" %></li>
+            <% end %>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Bloggers", users_path, class: "nav-link" %>
+        </li>
+
+        <% if logged_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <%= "(Admin)" if current_user.admin? %> Profile [<%= current_user.username %>]
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "View your profile", user_path(current_user),
+                              class:"dropdown-item" %></li>
+              <li><%= link_to 'Edit your profile', edit_user_path(current_user),
+                              class:"dropdown-item" %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to 'Delete your profile', user_path(current_user),
+                              class:"dropdown-item text-danger",
+                              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "LogOut", logout_path, class: "nav-link",
+                        data: { "turbo-method": :delete } %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "LogIn", login_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "SignUp", signup_path, class: "nav-link" %>
+          </li>
+        <% end %>
+
+        <li class="nav-item">
+          <%= link_to "About", about_path, class: "nav-link" %>
+        </li>
+
+      </ul>
+
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-secondary" type="submit">Search</button>
+      </form>
+
+    </div>
+  </div>
+</nav>
+
+

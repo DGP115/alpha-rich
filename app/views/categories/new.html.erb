@@ -1,0 +1,11 @@
+<div class="container">
+  <h4 class="text-center mt-2">Create a New Article Category</h4>
+</div>
+
+<%= render 'shared/error_msgs', obj: @category %>
+<%= render 'categories/form' %>
+
+<div class="text-center mt-2 mb-3">
+  <%= link_to '[ Cancel and return to Categories]', categories_path,
+               class: "text-decoration-none" %>
+</div>

@@ -1,0 +1,16 @@
+<!--  Trap for errors (coming from the articles or users controller) that occurred while
+      trying to save a new article or user.
+      Note:   This code would fail on first use unless @article or @user is instantiated first.
+              That happens in the edit action (in controller)-->
+<% if obj.errors.any? %>
+
+  <div class="container">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <h6 class="alert-heading">&#9888;The following error(s) occurred while trying to save the <%= obj.class.name.downcase %> as entered:</h6>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <% obj.errors.full_messages.each do |msg| %>
+        <li class="small mb-2"><%= msg %></li>
+      <% end %>
+    </div>
+  </div>
+<% end %>

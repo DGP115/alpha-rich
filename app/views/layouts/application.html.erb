@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Alpharich</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <!-- <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %> -->
+  </head>
+
+  <body class="d-flex flex-column">
+    <!-- The render statements below effectively include the referenced partial files here-->
+    <%= render 'layouts/navbar' %>
+
+    <div class = "container" id="page-backer">
+
+      <%= render 'layouts/messages' %>
+
+      <%= yield %>
+
+      <%= render 'shared/footer' %>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!-- Add display of flash messages, if there are any -->
+<div class="container">
+  <% flash.each do |type, msg| %>
+    <% if type == 'alert' %>
+      <% message_type = 'alert-danger' %>
+    <% elsif type == 'warning' %>
+      <% message_type = 'alert-warning' %>
+    <% elsif type == 'notice' %>
+      <% message_type = 'alert-success' %>
+    <% else %>
+      <% message_type = 'alert-secondary' %>
+    <% end %>
+
+    <div class="alert <%= message_type %> alert-dismissible fade show" role="alert">
+      &#9757; <%= msg %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+</div>

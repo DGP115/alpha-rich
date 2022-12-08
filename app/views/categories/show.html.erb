@@ -1,0 +1,27 @@
+<h4 class="text-center mt-2"><%= "Category: #{@category.name}" %></h4>
+
+<div class="text-center d-block mt-2">
+	<% if logged_in? && current_user.admin? %>
+		<%= link_to "Edit", edit_category_path(@category),
+								class: "btn btn-outline-primary btn-sm" %>
+		<%= link_to "Delete", category_path(@category),
+								class: "btn btn-outline-danger btn-sm",
+								data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+	<% end %>
+</div>
+
+<% if @category.articles.count > 0 %>
+  <h5 class="text-center border mt-4">Articles in this category:</h5>
+<% end %>
+
+<!--Utilizing the will_paginate gem to include pagination in the rendering of the articles listing -->
+<div class="apple_pagination">
+	<%= will_paginate @articles, :container => false %>
+</div>
+
+<%= render 'articles/article' %>
+
+<!--Utilizing the will_paginate gem to include pagination in the rendering of the articles listing -->
+<div class="apple_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>

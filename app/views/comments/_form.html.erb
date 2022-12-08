@@ -1,0 +1,20 @@
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+
+  <div>
+    <%= form.label "Commenter:" %>
+    <%= form.text_field :commenter, value: current_user.try(:username), class: "form-label" %>
+    <%= form.submit %>
+  </div>
+
+  <div class="col-12">
+    <div class="card text-center shadow mb-2 bg-white rounded">
+      <div class="card-header">
+        <%= form.label "Your comment:"  %>
+      </div>
+      <div class="card-body">
+        <%= form.text_area :content, rows:"4", class: "form-control shadow rounded"%>
+      </div>
+    <div>
+  </div>
+
+<% end %>

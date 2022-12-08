@@ -1,0 +1,58 @@
+<div class="container">
+  <% @articles.each do |article| %>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-2">
+        <div class="card text-center shadow mb-2 bg-white rounded">
+
+          <div class="card-header">
+            <% if article.user %>
+              <i>by: <%= link_to article.user.username,
+                                 user_path(article.user.id),
+                                 class: 'link text-decoration-none'  %></i>
+            <% end %>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to article.title, article_path(article),
+                                       class: 'link-dark text-decoration-none' %></h5>
+            <p class="card-text">
+              <em><%= article.description %></em>
+            </p>
+            <p class="card-text">
+              A sample &#8677;<%= truncate(strip_tags(article.content.to_s), length: 50) %>
+            </p>
+            <%= link_to "View", article_path(article.id),
+                class: "btn btn-outline-success btn-sm" %>
+            <% if logged_in? && (article.user == current_user || current_user.admin?) %> <!--Must check logged_in? first to ensure current_user is instantiated before checking it, or app would crash -->
+              <%= link_to "Edit", edit_article_path(article.id),
+                          class: "btn btn-outline-primary btn-sm" %>
+              <%= link_to "Delete", article_path(article.id),
+                          class: "btn btn-outline-danger btn-sm",
+                          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+            <% end %>
+          </div>
+
+          <div class="card-footer text-muted">
+
+            <% if article.categories.any? %>
+            <!--The line below is some Rails magic to ease the display of an array of
+                objects. The render function will look for a partial called "_category"
+                and pass to it each category object given by @articles.categories.
+                It is like looping through @articles.categories.each do-->
+              Categories: <%= render article.categories %>
+            <% end %>
+
+					  <ul class="small mt-1">
+              <ul>
+                Created <%=time_ago_in_words(article.created_at)%> ago.
+                Edited <%=time_ago_in_words(article.updated_at)%> ago.
+              </ul>
+              <ul>This article has garnered <%=pluralize(article.comments.count, 'comment')%>.</ul>
+					  </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

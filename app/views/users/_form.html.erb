@@ -1,0 +1,50 @@
+<!--  Use form_with helper to aid with the form for creating a new user and editing an
+      existing user . e.g.,
+        - For a new user, the "submit" button will have the label "Create User"
+        - For an existing user, it will pre-populate the edit form with the user's contents and label the "submit" button as "Update User".
+        - My word...
+
+        Because the "new" and "edit" actions need the user object to know which user
+        is being edited, as per the route, the user id is provided in the URI from the browser.
+        Rails and the forms helper know all this, so all we have to do is pass along
+        resource: @user and Rails will access the id from the user object.
+
+        local :true specifies form_with to use local http and not ajax
+-->
+<div class="container row justify-content-center col-10">
+
+  <%= form_with(model: @user, local: true, class: "shadow p-3 mb-3 bg-grey rounded") do |f| %>
+
+    <div class="form-group row">
+      <%= f.label :username, class: "col-2 col-form-label" %>
+      <div class="col-8">
+        <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "enter a username" %>
+      </div>
+    </div>
+
+    <div class="form-group row mt-2">
+      <%= f.label :email_address, class: "col-2 col-form-label" %>
+      <div class="col-9">
+        <%= f.email_field :email_address, class: "form-control shadow rounded" %>
+      </div>
+    </div>
+
+    <div class="form-group row mt-2">
+      <%= f.label :password, class: "col-2 col-form-label" %>
+      <div class="col-9">
+        <%= f.password_field :password, class: "form-control shadow rounded" %>
+      </div>
+    </div>
+
+    <div class="mt-2 text-center">
+     <%= f.submit(@user.new_record? ? "Sign up" : "Update Profile") %>
+    </div>
+
+  <% end %>
+
+</div>
+
+<div class="text-center mt-2 mb-3">
+  <%= link_to '[ Cancel and return to articles list ]', articles_path(),
+              data: { turbo_method: :index }, class: "text-decoration-none" %>
+</div>

@@ -1,0 +1,30 @@
+
+<h2 class="text-center mt-2"><%= "Blogger: #{@user.username}" %></h2>
+
+<div class="text-center d-block mt-2">
+  <%= avatar_for(@user, size:('100x100')) %>
+</div>
+
+<div class="text-center d-block mt-2">
+  <% if logged_in? && @user == current_user %>
+    <%= link_to 'Update Your Profile', edit_user_path(@user.id),
+                 class: "btn btn-primary btn-sm" %>
+  <% end %>
+</div>
+
+<% if @user.articles.count > 0 %>
+  <h5 class="text-center border mt-4">Articles by <%= @user.username %>:</h5>
+<% end %>
+
+<!--Utilizing the will_paginate gem to include pagination in the rendering of the articles listing -->
+<div class="apple_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+
+<%= render 'articles/article' %>
+
+<!--Utilizing the will_paginate gem to include pagination in the rendering of the articles listing -->
+<div class="apple_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+

@@ -1,0 +1,33 @@
+<!--  Use form_with helper to aid with the form for creating a new category and editing an
+      existing category. e.g.,
+        - For a new category, the "submit" button will have the label "Create Category"
+        - For an existing category, Rails will pre-populate the edit form with the category's contents and label the "submit" button as "Update Category".
+        - My word...
+
+        Because the "new" and "edit" actions need the category object to know which category
+        is being edited, as per the route, the category id is provided in the URI from the browser.
+        Rails and the forms helper know all this, so all we have to do is pass along
+        model: @category and Rails will access the id from the category object.
+
+        local :true speficies form_with to use local http and not ajax
+-->
+<div class="container row justify-content-center col-10">
+
+  <%= form_with(model: @category, local: true, class: "shadow p-3 mb-3 bg-grey rounded") do |f| %>
+
+    <div class="form-group row">
+      <%= f.label :name, "Category name:", class: "col-2 col-form-label" %>
+      <div class="col-8">
+        <%= f.text_field :name, class: "form-control shadow rounded", autofocus: "autofocus",
+                                placeholder: "Enter a category name" %>
+      </div>
+    </div>
+
+    <div class="mt-2 text-center">
+      <%= f.submit %>
+    </div>
+
+  <% end %>
+
+</div>
+

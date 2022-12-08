@@ -1,0 +1,28 @@
+<div class="myaccordion accordion" id="accordionExample">
+  <div class="accordian-item">
+    <h2 class="accordion-header" id="<%='heading'+comment_counter.to_s%>">
+      <button class="myaccordion accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="<%='#collapse'+comment_counter.to_s%>"
+              aria-expanded="true" aria-controls="<%='collapse'+comment_counter.to_s%>">
+        by: <%= comment.commenter %>
+      </button>
+    </h2>
+    <div id="<%='collapse'+comment_counter.to_s%>" class="accordion-collapse collapse"
+            aria-labelledby="<%='heading'+comment_counter.to_s%>"
+            data-bs-parent="#accordionExample">
+          <div class="myaccordion accordion-body">
+            <div class="myaccordian-text">
+              <%= comment.content %>
+              <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+
+                <%= link_to 'Delete', [comment.article, comment],
+                            class:"btn btn-outline-dark btn-sm float-end",
+                            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+
+              <% end %>
+
+            </div>
+          </div>
+    </div>
+  </div>
+</div>

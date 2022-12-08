@@ -1,0 +1,68 @@
+<div class="container">
+	<h5 class="text-center mt-2 mb-1"><%= @article.title %></h5>
+
+	<div class="row justify-content-md-center">
+		<div class="col-8 mt-1">
+			<div class="card text-center shadow mb-2 bg-white rounded">
+
+				<div class="card-header">
+          <% if @article.user %>
+            <i>by: <%= link_to @article.user.username,
+                               user_path(@article.user.id),
+                               class: 'link text-decoration-none'  %></i>
+						<i> <%= link_to avatar_for(@article.user, size:('50x50')),
+														user_path(@article.user.id) %> </i>
+          <% end %>
+				</div>
+
+				<div class="card-body">
+					<div class="rounded border border-secondary border-opacity-50 mb-1">
+						<div class="text-start"><%= @article.description %></div>
+					</div>
+					<div class="trix-content card-text">
+						<%= @article.content %>
+					</div>
+					<% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+						<%= link_to "Edit", edit_article_path(@article.id),
+												class: "btn btn-outline-primary btn-sm" %>
+						<%= link_to "Delete", article_path(@article.id),
+												class: "btn btn-outline-danger btn-sm",
+												data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+					<% end %>
+				</div>
+
+				<div class="card-footer text-muted">
+
+					<% if @article.categories.any? %>
+					<!--The line below is some Rails magic to ease the display of an array of
+					    objects. The render function will look for a partial called "_category"
+							and pass to it each category object given by @articles.categories.
+							It is like looping through @articles.categories.each do-->
+						Article Categories: <%= render @article.categories %>
+					<% end %>
+
+					<ul class="small mt-1 text-center">
+						<ul>
+							Created <%=time_ago_in_words(@article.created_at)%> ago.
+							Edited <%=time_ago_in_words(@article.updated_at)%> ago.
+						</ul>
+					</ul>
+				</div>
+
+			</div>
+			<% if @article.comments.any? %>
+				<h6>Comments:</h6>
+			<% end %>
+			<%= render @article.comments %>
+			<h6 class="mt-2">Care to comment?</h6>
+			<%= render 'comments/form' %>
+
+		</div>
+
+	</div>
+
+</div>
+
+<%= link_to 'Return to Articles list' , articles_path(@article.id),
+  data: { turbo_method: :index },class:"mt-1 row justify-content-md-center text-decoration-none" %>
+

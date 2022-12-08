@@ -1,0 +1,13 @@
+
+<h2 class="text-center mt-2">Our Bloggers</h2>
+
+<!--Utilizing the will_paginate gem to include pagination in the rendering of the users listing -->
+<div class="apple_pagination">
+  <%= will_paginate @users, :container => false %>
+</div>
+
+<%= render 'users/user' %>
+
+<div class="apple_pagination">
+  <%= will_paginate @users, :container => false %>
+</div>

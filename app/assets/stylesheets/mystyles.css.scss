@@ -1,0 +1,59 @@
+.hero {
+  color: rgb(215, 13, 13);
+  line-height: 44px;
+  padding: 22px 80px 66px 80px;
+  text-align: center
+}
+/*
+Classes that define columns of 1/3 width and 2/3 width
+*/
+.col-30 {
+  width: 30%;
+}
+.col-70 {
+  width: 70%;
+}
+
+.mybadge-background {
+  background: rgb(180, 180, 192);
+}
+
+.mybadge-text {
+  font-size:medium;
+  font-weight: 400;
+  color: midnightblue;
+  text-decoration: none;
+}
+
+.myaccordian-text {
+  font-size: 14px;
+  color: midnightblue;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+.myaccordion {
+  background: -webkit-linear-gradient(to right,#bdbec4,#acaee0);
+  background: -moz-linear-gradient(to right,#bdbec4, #acaee0);
+  background: linear-gradient(to right,#bdbec4, #acaee0);
+  color: black;
+  cursor: pointer;
+  $accordion-button-color: black;
+  padding: 4px;
+  width: 100%;
+  border: 1px;
+  text-align: left;
+  outline: 1px;
+  font-size: 14px;
+  transition: 0.4s;
+  border-color:black;
+  border-width: 2px;
+}
+
+.mytrix-field {
+  min-height: 16em;
+}
+
+.mycategory-background {
+  background: rgb(211, 211, 228);
+}
