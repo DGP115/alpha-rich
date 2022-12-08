@@ -57,6 +57,8 @@ gem 'rexml', require: false
 
 gem 'email_validator', '~> 2.2', '>= 2.2.4'
 
+gem 'jquery-rails'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
