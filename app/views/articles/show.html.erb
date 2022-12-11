@@ -19,7 +19,7 @@
 					<div class="rounded border border-secondary border-opacity-50 mb-1">
 						<div class="text-start"><%= @article.description %></div>
 					</div>
-					<div class="trix-content card-text">
+					<div class="trix-content attachment">
 						<%= @article.content %>
 					</div>
 					<% if logged_in? && (@article.user == current_user || current_user.admin?) %>
