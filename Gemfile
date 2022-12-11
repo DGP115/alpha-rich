@@ -90,4 +90,5 @@ end
 group :production do
   # For production (heroku), use the postgresql [pg] database
   gem "pg"
+  gem 'aws-sdk', '~> 3.1'
 end
